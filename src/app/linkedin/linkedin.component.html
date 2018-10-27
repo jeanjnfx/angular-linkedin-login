@@ -1,0 +1,45 @@
+<div class="linkedinForm">
+  <div class="title">
+    Welcome!
+  </div>
+  <ng-container *ngIf="!USER_DATA?.isLoggedIn">
+    <div class="description">
+      Don't miss your next opportunity. Sign in to stay updated on your professional world.
+    </div>
+    <div class="loginButton">
+      <button (click)="login()">Sign In</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="USER_DATA?.isLoggedIn && !loading">
+    <div class="card">
+      <div class="row">
+        <div class="col-4 col-photo">
+          <div class="photo">
+            <img [src]="USER_PROFILE?.photo || '/assets/img/placeholderPhoto.JPG'" alt="">
+          </div>
+        </div>
+        <div class="col userData">
+          <div class="userName">
+            {{USER_PROFILE?.name}}
+          </div>
+          <div class="userTitle">
+            {{USER_PROFILE?.occupation}}
+          </div>
+          <div class="userLocation">
+            {{USER_PROFILE?.location}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="userDescription" [innerHTML]="USER_PROFILE?.description"> </div>
+        </div>
+      </div>
+    </div>
+    <div class="loginButton">
+      <button (click)="logoutLinkedin()">Log Out</button>
+    </div>
+  </ng-container>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
