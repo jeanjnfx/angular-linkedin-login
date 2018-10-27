@@ -9,4 +9,4 @@ Proyecto en modo producción con heroku app
 
 FrontEnd: http://linkedin-login-frontend.herokuapp.com/
 
-Backend: https://linkedin-login-backend.herokuapp.com/
+Backend: http://linkedin-login-backend.herokuapp.com/
