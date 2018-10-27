@@ -16,11 +16,11 @@ export class LinkedinComponent implements OnInit {
   /**
    * URL actual en el navegador
    */
-  private currentURL: any;
+  public currentURL: any;
   /**
    * Modelo de datos del usuario tras haber realizado login
    */
-  private USER_DATA = {
+  public USER_DATA = {
     isLoggedIn: false,
     token: null,
     userId: null
@@ -32,19 +32,20 @@ export class LinkedinComponent implements OnInit {
   /**
    * Constante auxiliar para la validación de URL
    */
-  private VALIDATOR_URL = {
+  public VALIDATOR_URL = {
     token: 'access-token=',
     id: 'user-id='
   };
 
   constructor(
-    private linkedinService: LinkedinService,
-    private ngZone: NgZone
+    public linkedinService: LinkedinService,
+    public ngZone: NgZone
   ) {
     this.currentURL = window.location.href || '';
     try {
       if (this.currentURL.includes(this.VALIDATOR_URL.token)) {
-        const INFO = this.currentURL.substring(this.currentURL.indexOf(this.VALIDATOR_URL.token) + this.VALIDATOR_URL.token.length).split('&');
+        const INFO = this.currentURL.substring(this.currentURL.indexOf(this.VALIDATOR_URL.token) +
+        this.VALIDATOR_URL.token.length).split('&');
         this.USER_DATA.token = INFO[0];
         localStorage.setItem('token', this.USER_DATA.token);
         this.USER_DATA.userId = INFO[1].substring(this.VALIDATOR_URL.id.length);
@@ -68,7 +69,7 @@ export class LinkedinComponent implements OnInit {
     this.loading = false;
   }
 
-  private getUserData() {
+  public getUserData() {
     this.loading = true;
     this.USER_PROFILE = {
       photo: null,
